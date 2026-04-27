@@ -1,4 +1,3 @@
-# 通过 Github actions， 在 Github 仓库的每一次 commit 后自动同步到 Gitee 上.
 name: sync2gitee
 
 on:
@@ -7,18 +6,20 @@ on:
       - master
       - dev
       - main
-  workflow_dispatch:  # 加上这个，就有手动运行按钮了
+  workflow_dispatch:
 
 jobs:
   repo-sync:
     env:
+      # 强制使用 Node.js 24，消除警告
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
       dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
       dst_token: ${{ secrets.GITEE_TOKEN }}
       gitee_user: ${{ secrets.GITEE_USER }}
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4  # 已升级到 v4，无警告
+      - uses: actions/checkout@v4
         with:
           persist-credentials: false
 
