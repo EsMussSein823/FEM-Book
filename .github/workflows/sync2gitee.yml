@@ -33,6 +33,6 @@ jobs:
           # 必选，Gitee对应的用于创建仓库的token
           dst_token: ${{ secrets.GITEE_TOKEN }}
           # 个人仓库，这里改为 user
-          account_type: user`
+          account_type: user
           # 直接取当前项目的仓库名
           static_list: ${{ github.event.repository.name }}
