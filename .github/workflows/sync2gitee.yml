@@ -6,6 +6,8 @@ on:
     branches:
       - master
       - dev
+      - main  # 加上 main，现在很多仓库默认是 main
+  workflow_dispatch:  # 这一行是关键，加了就有按钮
 
 jobs:
   repo-sync:
